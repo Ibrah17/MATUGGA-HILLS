@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MATUGGA HILLS SECONDARY SCHOOL</title>
     <style>
@@ -12,6 +12,12 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+
+        :root{
+            --secondary: #00008b;
+            --primary: #0000ff;
+            --tertiary: #f4f7f6;
         }
 
         body {
@@ -202,7 +208,7 @@
         }
 
         
-        footer {
+        /*footer {
             background: #1a2633;
             color: #d4dce6;
             text-align: center;
@@ -213,7 +219,56 @@
         }
         footer p {
             opacity: 0.9;
+        }*/
+
+        .site-footer {
+            background-color: var(--secondary);
+            color: #ffffff;
+            padding: 60px 5% 20px;
         }
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col h5 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: #fff;
+    border-bottom: 2px solid var(--primary);
+    display: inline-block;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col a {
+    color: #cccccc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-col a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #555;
+    padding-top: 20px;
+    font-size: 0.8rem;
+    color: #888;
+}
+
 
        
         /*@media (max-width: 700px) {
@@ -344,6 +399,119 @@ leader-card p {
     text-align: center;
 }
 
+/* Why Us */
+.why-us{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 60px 10%;
+}
+
+.intro-block{
+    margin-bottom: 40px;
+}
+
+.intro-block h4{
+    color: var(--primary);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.intro-block h5{
+    font-size: 2.2rem;
+    color: var(--secondary);
+    margin: 0 0 15px 0;
+    line-height: 1.2;
+}
+
+.intro-block p{
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 80%;
+    line-height: 1.6;
+}
+
+.content-container{
+    flex: 1;
+}
+
+.image-gallery{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.rounded-corner-img{
+    margin-top: -10px;
+    width: 500px;
+    height: 200px;
+    border-radius: 30px 0 30px 0;
+}
+
+.why-list {
+    padding: 0;
+    list-style: none;
+}
+
+.why-list li {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid navy;
+}
+
+.why-list li i {
+    color: var(--primary);
+    margin-right: 15px;
+    width: 25px;
+    font-size: 2.5rem;
+}
+
+.list-text h4{
+    margin: 0 0 5px 0;
+    font-size: 1.25rem;
+    color: var(--secondary);
+}
+
+.list-text p{
+    margin: 0;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Mobile Responsive Layout for "Why Us" Section */
+@media (max-width: 768px) {
+    .why-us {
+        flex-direction: column; /* Switches from side-by-side to stacked */
+        padding: 40px 5%;      /* Adjust padding for smaller screens */
+        gap: 30px;
+    }
+
+    .image-gallery {
+        order: 2; /* Ensures images appear AFTER the text/list */
+        width: 100%;
+        align-items: center;
+    }
+
+    .rounded-corner-img {
+        width: 100%;       /* Make images fill the phone screen width */
+        height: auto;      /* Maintain aspect ratio */
+        max-width: 400px;  /* Keep them from getting too huge */
+    }
+
+    .content-container {
+        order: 1; /* Ensures text/list appears BEFORE the images */
+    }
+}
+
     </style>
 </head>
 <body>
@@ -444,6 +612,48 @@ leader-card p {
         <strong> <i>It's a little thing that matters.</i> </strong>"</p>
         <button onclick="hideAbout()">hide</button>
     </section>
+
+    <section class="why-us scroll-reveal">
+            <!---Left column: For texts and list-->
+        <div class="content-container">
+            <div class="intro-block">
+                <h4>WHY JOIN US</h4>
+                <h5>Your Future Starts Here</h5>
+                <p>At Matugga Hills Secondary School, we are committed to providing a holistic environment where every student can discover their purpose and achieve academic greatness.</p>
+           </div>
+            <ul class="why-list">
+                <li>
+                    <i class="fa-solid fa-book"></i>
+                    <div class="list-text">
+                        <h4>Academic Excellence</h4>
+                        <p>We provide a robust curriculum designed to challenge students and foster critical thinking skills.</p>
+                   </div>
+                </li>
+                <li>
+                    <i class="fa-solid fa-people-group"></i> 
+                    <div class="list-text">
+                        <h4>Strong Community</h4>
+                        <p>Our school is a family where every student is supported, valued, and encouraged to thrive together.</p>
+                    </div>
+                </li>
+                <li>
+                    <i class="fa-solid fa-dove"></i> 
+                    <div class="list-text">
+                        <h4>Spiritual Values</h4>
+                        <p>We nurture charater and integrity, grounding our students in values that guide them for a lifetime</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+            <!-- Right column: Image area-->
+        <div class="image-gallery">
+            <img src="join-us1.jpg" alt="why join us image" class="rounded-corner-img">
+            <img src="join-us2.jpg" alt="why join us image" class="rounded-corner-img">
+            <img src="join-us3.jpg" alt="why join us image" class="rounded-corner-img">
+        </div>
+    </section>
+
 
     <section class="leadership-section">
         <h3>Meet Our School Leadership Team</h3>
@@ -577,9 +787,45 @@ leader-card p {
     </section>
 
 
-    <footer>
-        <p>&copy; 2026 Matugga Hills Secondary School – <em>“It's a little thing that matters”</em></p>
-    </footer>
+     <footer class="site-footer">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h5>About Us</h5>
+                    <p>Matugga Hill Secondary School is committed to academic excellence, spiritual values, and nurturing the leaders of tomorrow.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Our School</h5>
+                    <ul>
+                        <li><a href="#">Headteacher's Message</a></li>
+                        <li><a href="#">Leadership Team</a></li>
+                        <li><a href="#">Admissions</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Useful Links</h5>
+                    <ul>
+                        <li><a href="#">School Calendar</a></li>
+                        <li><a href="#">Library</a></li>
+                        <li><a href="#">Student Portal</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Follow Us</h5>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Matugga Hill Secondary School. All rights reserved.</p>
+            </div>
+        </footer>
 
    <script>
         function showMessage() {
