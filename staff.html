@@ -5,84 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our team</title>
     <style>
-        .leadership {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Auto-fits cards based on screen size */
-            gap: 30px; /* Space between cards */
-            padding: 40px 0;
-        }
+    /* Reset and general container */
+    .leadership-section {
+        background-color: #FAEBD7;
+        padding: 40px 5%; /* Use percentage for better mobile spacing */
+        text-align: center;
+    }
 
-/*.leader-card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease; / Smooth hover effect /
-}*/
+    .hero-content {
+        margin-bottom: 30px;
+    }
 
-.leader-card:hover {
-    transform: translateY(-10px); /* Lifts the card slightly when hovered */
-}
-leader-card p {
-    color: #6B7280;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
+    .hero-content h1 {
+        font-size: 2rem; /* Smaller for mobile */
+        color: #0000ff;
+        margin: 0;
+    }
 
-.leader-card img {
-    width: 200px;
-    height: 250px;
-   /* border-radius: 50%;  Makes the image a perfect circle */
-    object-fit: cover;
-    /*margin-bottom: 15px;
-    border: 4px solid var(--secondary);*/
-}
-.leadership-section{
-    background-color:#FAEBD7;
-}
-.leader-card h5 {
-    margin: 10px 0 5px;
-    font-size: 1.2rem;
-    color: var(--primary);
-}
+    .hero-content h3 {
+        font-size: 1.1rem;
+        margin-top: 10px;
+        color: #00008b;
+    }
 
-.leader-card h6 {
-    margin: 0;
-    color: #666;
-    font-weight: normal;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-}
-.leadership-section{
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
+    /* Responsive Grid */
+    .leadership {
+        display: grid;
+        /* This line is the key: it switches to 1 column on mobile, 2 on tablets, and 3+ on desktop */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 
-.hero-content{
-    position: relative;
-    z-index: 2;
-    background: rgba(0, 0, 0, 0.4);
-    padding: 40px;
-    border-radius: 15px;
-    
-}
+    .leader-card {
+        background: #fff;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
 
-.hero-content h1{
-    font-size: 3rem;
-    margin: 0;
-    color: #0000ff;
-}
+    .leader-card:hover {
+        transform: translateY(-10px);
+    }
 
-.hero-content h3{
-    font-size: 1.5rem;
-    margin-top: 20px;
-    color: #00008b;
-}
-    </style>
-   
+    .leader-card img {
+        width: 100%;       /* Fluid width */
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .leader-card h4 {
+        margin: 5px 0;
+        font-size: 1.1rem;
+    }
+
+    .leader-card h6 {
+        margin: 0;
+        color: #666;
+        font-weight: normal;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+    }
+
+    /* Mobile override */
+    @media (max-width: 600px) {
+        .hero-content h1 { font-size: 1.5rem; }
+        .leadership { grid-template-columns: 1fr; } /* Force 1 column on small phones */
+    }
+</style>
 </head>
 <body>
       <section class="leadership-section">
