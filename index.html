@@ -173,8 +173,9 @@
     </section>
 
     <!-- Inquiry Form -->
-    <section class="section" id="inquiryForm">
-
+    <section class="modal" id="inquiryForm">
+      <div class="modal-content">
+        <span class="close-btn" onclick="hideInquiry()">&times;</span>
         <h2>Inquiry Form</h2>
 
         <form>
@@ -195,7 +196,7 @@
                 </div>
 
                 <div>
-                    <label>Telephone Number</label>
+                    <label>Phone Number</label>
                     <input type="tel" required>
                 </div>
 
@@ -204,24 +205,16 @@
                     <input type="text" required>
                 </div>
 
-                <div>
-                    <label>Date of Birth</label>
-                    <input type="date" required>
-                </div>
-
             </div>
 
             <label>Your Message</label>
 
-            <textarea rows="5" required></textarea>
-
-            <br><br>
+            <textarea placeholder="Enter your message here..." rows="5" required></textarea>
 
             <button type="submit">Submit</button>
-
-            <button type="button" onclick="hideInquiry()">&times;</button>
-
+            
         </form>
+      </div>
 
     </section>
 
