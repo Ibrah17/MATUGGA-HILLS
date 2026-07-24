@@ -253,6 +253,23 @@
     color: #ffffff;
 }
 
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.social-links i {
+    width: 18px;
+    text-align: center;
+}
+
 .footer-bottom {
     text-align: center;
     border-top: 1px solid #555;
