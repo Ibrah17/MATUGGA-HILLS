@@ -99,6 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/images/budge.jpg" type="image/jpeg">
     <title>Matugga Hills SS - Online Admission Portal</title>
     <style>
         :root { --primary: #004080; --secondary: #274e13; --bg: #f4f7f6; --text: #333; }
