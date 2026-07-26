@@ -7,6 +7,7 @@
     <link rel="icon" href="assets/images/budge.jpg" type="image/jpeg">
     <title>MATUGGA HILLS SECONDARY SCHOOL</title>
    <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
 </head>
 <body>
     <header class="site-header">
@@ -19,13 +20,19 @@
         </div>
     </header>
     
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="About us.html" onclick="showAbout(); return false;">About Us</a>
-        <a href="admissions.php">Admissions</a>
-        <a href="academics.html">Academics</a>
-        <a href="#">Contact</a>
-       <a href="#" onclick="showInquiry(); return false;">Inquiry</a>
+    <nav class="site-nav">
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="About us.html" onclick="showAbout(); return false;">About Us</a>
+            <a href="admissions.php">Admissions</a>
+            <a href="academics.html">Academics</a>
+            <a href="#">Contact</a>
+            <a href="#" onclick="showInquiry(); return false;">Inquiry</a>
+            <a href="staff.html">Staff</a>
+        </div>
     </nav>
 
     <section class="hero">
@@ -62,7 +69,7 @@
                     <li><strong>High Expectation</strong> – We all set high goals, inspire personalbest and continuousimprovementof all staff and studentsS</li>
                 </ul>
             </div>
-       
+        </div>
     </section>
     
     <section class="why-us scroll-reveal">
@@ -164,13 +171,54 @@
     </section>
 
     <section class="gallery scroll-reveal">
-        <h4>OUR SCHOOL GALLERY WITH LATEST PICTURES</h4>
+    <h4>OUR SCHOOL GALLERY WITH LATEST PICTURES</h4>
     
-        <div class="gallery-grid">
-            
-
+    <div class="gallery-grid">
+        
+        <!-- Gallery Item 1 -->
+        <div class="gallery-item">
+            <a href="assets/images/s6 pic.jpg" data-lightbox="school-gallery" data-title="Senior Six Students">
+                <img src="assets/images/s6 pic.jpg" alt="Senior Six Students">
+                <div class="img-caption">
+                    <span>Senior Six Students</span>
+                </div>
+            </a>
         </div>
-    </section>
+
+        <!-- Gallery Item 2 -->
+        <div class="gallery-item">
+            <a href="assets/images/s6 pic.jpg" data-lightbox="school-gallery" data-title="Senior Six Students">
+                <img src="matugga pics/classroom.jpg" alt="Classroom Session">
+                <div class="img-caption">
+                    <span>Interactive Learning</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Gallery Item 3 -->
+        <div class="gallery-item">
+            <a href="assets/images/opoka teaching.jpg" data-lightbox="school-gallery" data-title="Science Laboratory Practical">
+                <img src="assets/images/opoka teaching.jpg" alt="Science Lab">
+                <div class="img-caption">
+                    <span>Science Laboratory Practical</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Gallery Item 4 -->
+        <div class="gallery-item">
+            <a href="assets/images/s6 pic.jpg" data-lightbox="school-gallery" data-title="Senior Six Students">
+                <img src="matugga pics/classroom.jpg" alt="Classroom Session">
+                <div class="img-caption">
+                    <span>Interactive Learning</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Add more items as needed following the same pattern -->
+
+    </div>
+</section>
     
     <section class="section">
         <h2>Contact Us</h2>
@@ -297,6 +345,13 @@
             document.getElementById("aboutSection").style.display = "none";
         }
         
+        function toggleMenu() {
+            const navLinks = document.getElementById("navLinks");
+            if (navLinks) {
+                navLinks.classList.toggle("active");
+            }
+        }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
 </body>
 </html>
