@@ -253,15 +253,83 @@ header p {
     text-align: center;
 }
 
-/* announcement cards */
-.announcement {
-    background: #eef5ff;
-    padding: 14px 20px;
-    margin: 14px 0;
-    border-left: 6px solid #0066cc;
-    border-radius: 6px;
-    font-weight: 500;
-    color: #003366;
+/* Announcements Section Layout */
+.announcements-section {
+    padding: 60px 5%;
+    background-color: #ffffff;
+}
+
+.announcements-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.announcements-section h2 {
+    font-size: 2.2rem;
+    color: #002d72;
+    margin-bottom: 10px;
+}
+
+.announcements-container .section-subtitle {
+    color: #555;
+    font-size: 1.05rem;
+    margin-bottom: 40px;
+}
+
+/* Grid Layout for Announcements */
+.announcements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    text-align: left;
+}
+
+/* Professional Announcement Cards */
+.announcement-card {
+    background: #f8faff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.announcement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Icon Box Styling with Dark Goldenrod */
+.announcement-card .icon-box {
+    background: #fff8eb;
+    color: darkgoldenrod;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+/* Typography Inside Cards */
+.announcement-content h4 {
+    font-size: 1.1rem;
+    color: #002d72;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.announcement-content p {
+    font-size: 0.95rem;
+    color: #4a5568;
+    margin: 0;
+    line-height: 1.4;
 }
 
 /* new blocks: motto, vision, values, history */
@@ -270,37 +338,144 @@ header p {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
-.info-card {
-    background: #f8faff;
-    padding: 18px 22px;
-    border-radius: 14px;
-    border: 1px solid #e0e9f5;
-    transition: 0.1s;
+/* Identity Section Layout */
+.identity-section {
+    padding: 60px 5%;
+    background-color: #f8faff;
 }
-.info-card h3 {
-    color: #004c99;
-    font-size: 1.5rem;
-    margin-bottom: 8px;
+
+.identity-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.identity-section h2 {
+    font-size: 2.2rem;
+    color: #002d72;
+    margin-bottom: 10px;
+}
+
+.identity-container .section-subtitle {
+    color: #555;
+    font-size: 1.05rem;
+    margin-bottom: 40px;
+}
+
+/* Grid Layout */
+.grid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    text-align: left;
+}
+
+/* Make the values card span full width if desired, or keep 2-column flow */
+.values-card {
+    grid-column: span 2;
+}
+
+/* Info Card Styling */
+.info-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Header Flex for Icon + Title */
+.card-header-flex {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 15px;
+    margin-bottom: 16px;
 }
-.info-card h3 i {
-    font-style: normal;
-    font-size: 1.8rem;
+
+/* Icon Box Styling with Dark Goldenrod */
+.info-card .icon-box {
+    background: #fff8eb;
+    color: darkgoldenrod;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
 }
-.info-card p, .info-card li {
-    font-size: 1.05rem;
-    color: #1e2f40;
+
+.info-card h3 {
+    color: #002d72;
+    font-size: 1.35rem;
+    margin: 0;
+    font-weight: 600;
 }
-.info-card ul {
+
+/* Typography elements */
+.motto-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #003366;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.card-desc {
+    font-size: 1rem;
+    color: #4a5568;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.vision-desc {
+    margin-top: 8px;
+}
+
+/* Values List Styling */
+.values-list {
     list-style: none;
-    padding-left: 4px;
+    padding-left: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
 }
-.info-card ul li {
-    padding: 6px 0 6px 28px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="%230066cc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>') left center no-repeat;
-    background-size: 18px;
+
+.values-list li {
+    padding: 10px 14px;
+    background: #f8faff;
+    border-radius: 8px;
+    border: 1px solid #edf2f7;
+    font-size: 0.95rem;
+    color: #2d3748;
+    line-height: 1.5;
+}
+
+.values-list li strong {
+    color: #002d72;
+}
+
+/* Mobile Breakpoint */
+@media (max-width: 768px) {
+    .grid-2col {
+        grid-template-columns: 1fr;
+    }
+    
+    .values-card {
+        grid-column: span 1;
+    }
+
+    .values-list {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
@@ -329,25 +504,94 @@ header p {
     line-height: 1.7;
 }
 
-/* contact */
-.contact-details {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px 40px;
-    font-size: 1.1rem;
-    background: #f6faff;
-    padding: 18px 22px;
-    border-radius: 16px;
+/* Contact Section Layout */
+.contact-section {
+    padding: 60px 5%;
+    background-color: #f8faff;
 }
-.contact-details p {
+
+.contact-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2.2rem;
+    color: #002d72;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    color: #555;
+    font-size: 1.05rem;
+    margin-bottom: 40px;
+}
+
+/* Contact Grid */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    text-align: left;
+}
+
+/* Professional Contact Cards */
+.contact-card {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Icon Box Styling with Dark Goldenrod */
+.contact-card .icon-box {
+    background: #fff8eb;
+    color: darkgoldenrod;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
 }
-.contact-details i {
-    font-style: normal;
+
+/* Typography Inside Cards */
+.contact-info h4 {
+    font-size: 1.1rem;
+    color: #002d72;
+    margin-bottom: 6px;
     font-weight: 600;
-    color: #004c99;
+}
+
+.contact-info p {
+    font-size: 0.95rem;
+    color: #4a5568;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.contact-info a {
+    color: #4a5568;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.contact-info a:hover {
+    color: darkgoldenrod;
+    text-decoration: underline;
 }
 
         
@@ -963,4 +1207,14 @@ button { background: #3b82f6; color: white; border: none; padding: 10px 20px; bo
     .gallery-item {
         height: 280px; /* Slightly taller cards on mobile for better visibility */
     }
+}
+
+.footer-col ul li a .footer-icon {
+    color: darkgoldenrod; /* or use hex code #b8860b */
+    margin-right: 8px; /* ensures good spacing between the icon and text */
+}
+
+/* Optional: if you want the icon to brighten slightly when hovering over the link */
+.footer-col ul li a:hover .footer-icon {
+    color: #daa520; /* lighter goldenrod on hover */
 }
