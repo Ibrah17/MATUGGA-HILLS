@@ -777,7 +777,7 @@ header p {
     grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
     margin: 0 auto;
     max-width: 1180px;
-    padding: clamp(56px, 8vw, 96px) 24px;
+    padding: clamp(56px, 8vw, 96px) 24px 32px;
 }
 
 .academics-copy h2 {
@@ -833,8 +833,151 @@ header p {
     font-size: 0.95rem;
 }
 
+.curriculum-programme {
+    align-items: center;
+    background: #f6f9ff;
+    display: grid;
+    gap: clamp(26px, 4vw, 52px);
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    margin: 0 auto;
+    max-width: 1180px;
+    padding: 28px 24px 54px;
+}
+
+.curriculum-programme--reverse {
+    background: #ffffff;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+}
+
+.curriculum-visual {
+    align-items: center;
+    background: linear-gradient(135deg, #edf4ff 0%, #dfeeff 100%);
+    border: 2px dashed #9cb8da;
+    border-radius: 18px;
+    box-shadow: 0 18px 46px rgba(0, 61, 128, 0.12);
+    display: flex;
+    justify-content: center;
+    min-height: 300px;
+    overflow: hidden;
+}
+
+.curriculum-visual--placeholder {
+    color: #496686;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.curriculum-visual img {
+    display: block;
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.curriculum-copy {
+    color: #38495d;
+}
+
+.curriculum-copy h2 {
+    color: #003d80;
+    font-size: clamp(1.8rem, 3vw, 2.7rem);
+    line-height: 1.2;
+    margin: 10px 0 18px;
+}
+
+.curriculum-copy h3 {
+    color: #003d80;
+    font-size: 1.2rem;
+    margin: 26px 0 12px;
+}
+
+.curriculum-copy p {
+    font-size: 1.04rem;
+    line-height: 1.8;
+    margin: 0 0 18px;
+}
+
+.subject-list {
+    columns: 2;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.subject-list li {
+    background: #ffffff;
+    border: 1px solid #dfe9f5;
+    border-radius: 10px;
+    color: #243a53;
+    font-weight: 600;
+    margin: 0 0 12px;
+    padding: 12px 14px;
+    break-inside: avoid;
+}
+
+.subject-list--compact {
+    columns: 2;
+}
+
+.academics-values {
+    background: linear-gradient(180deg, #efeff6 0%, #ffffff 100%);
+    margin: 0 auto;
+    max-width: 1180px;
+    padding: 28px 24px 72px;
+    text-align: center;
+}
+
+.academics-values h2 {
+    color: #003d80;
+    font-size: clamp(2rem, 3vw, 3rem);
+    margin: 10px auto 32px;
+    max-width: 760px;
+}
+
+.value-grid {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.value-grid article {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 12px 28px rgba(0, 61, 128, 0.08);
+    padding: 24px 18px;
+    text-align: left;
+}
+
+.value-grid h3 {
+    color: #003d80;
+    font-size: 1.08rem;
+    margin-bottom: 10px;
+}
+
+.value-grid p {
+    color: #586d82;
+    line-height: 1.7;
+    margin: 0;
+}
+
 .academics-content + .site-footer {
     margin-top: 0;
+}
+
+@media (max-width: 900px) {
+    .curriculum-programme,
+    .curriculum-programme--reverse,
+    .value-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .subject-list,
+    .subject-list--compact {
+        columns: 1;
+    }
 }
 
 @media (max-width: 700px) {
@@ -851,15 +994,25 @@ header p {
         font-size: 0.92rem;
     }
 
-    .academics-content {
-        grid-template-columns: 1fr;
+    .academics-content,
+    .curriculum-programme,
+    .curriculum-programme--reverse,
+    .academics-values {
         padding-left: 20px;
         padding-right: 20px;
+    }
+
+    .academics-content {
+        grid-template-columns: 1fr;
     }
 
     .academics-copy p:not(.section-label) {
         font-size: 1rem;
         line-height: 1.75;
+    }
+
+    .value-grid article {
+        padding: 20px 16px;
     }
 }
 
