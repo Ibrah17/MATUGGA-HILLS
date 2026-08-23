@@ -2,16 +2,19 @@
 // index.php - All-in-one Admission Form, CSV Tracker, and Receipt Generator for Matugga Hills SS
 
 $submitted = false;
+// Store the generated application tracking ID for the receipt.
 $app_id = "";
+// Store the readable date and time shown on the receipt.
 $submission_date = "";
 
 // ==========================================
 // 1. BACKEND PROCESSING (Triggers on POST)
 // ==========================================
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Mark the request as submitted so the receipt view is displayed.
     $submitted = true;
 
-    // Sanitize General Information
+    // Read and escape the student's general information from the submitted form.
     $student_name        = htmlspecialchars($_POST['student_name'] ?? '');
     $dob                 = htmlspecialchars($_POST['dob'] ?? '');
     $gender              = htmlspecialchars($_POST['gender'] ?? '');
@@ -25,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email               = htmlspecialchars($_POST['email'] ?? '');
     $residential_address = htmlspecialchars($_POST['residential_address'] ?? '');
 
-    // Collect Dynamic Class-Specific Information
+    // Build one summary of the academic fields for the selected class.
     $academic_details    = "N/A";
     
     if ($target_class === "Senior One") {
@@ -55,28 +58,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $academic_details = "UCE Res: $uce_res | Combo: $comb | Math: $o_math, Eng: $o_eng, Phys: $o_phys, Chem: $o_chem, Bio: $o_bio";
     }
 
-    // Handle File Upload
+    // Set the default upload message when no transcript is provided.
     $uploaded_file_name = "No File Uploaded";
+    // Process the transcript only when a file was uploaded successfully.
     if (isset($_FILES['transcript']) && $_FILES['transcript']['error'] == UPLOAD_ERR_OK) {
+        // Keep uploaded transcripts in the local uploads directory.
         $upload_dir = 'uploads/';
+        // Create the upload directory when it does not already exist.
         if (!is_dir($upload_dir)) {
             mkdir($upload_dir, 0755, true);
         }
+        // Preserve the file extension while generating a safe unique filename.
         $file_extension = pathinfo($_FILES['transcript']['name'], PATHINFO_EXTENSION);
         $uploaded_file_name = "APP_" . date("Ymd_His") . "_" . preg_replace("/[^a-zA-Z0-9]/", "_", $student_name) . "." . $file_extension;
+        // Move the temporary upload into the permanent uploads directory.
         move_uploaded_file($_FILES['transcript']['tmp_name'], $upload_dir . $uploaded_file_name);
     }
 
-    // Generate Application ID & Timestamp
+    // Generate the application ID and the timestamp used by the tracker and receipt.
     $app_id          = "MHSS-" . date("Ymd-His");
     $submission_date = date("Y-m-d H:i:s");
 
-    // Save to CSV Tracker
+    // Open the CSV tracker in append mode so earlier applications are preserved.
     $csv_file = "admissions_tracker.csv";
     $is_new_file = !file_exists($csv_file);
     $file_handle = fopen($csv_file, "a");
 
     if ($is_new_file) {
+        // Add column headings when this is the first application in the tracker.
         fputcsv($file_handle, [
             "App ID", "Submission Date", "Student Name", "DOB", "Gender", 
             "Target Class", "Previous School", "Academic Details / Scores", 
@@ -85,12 +94,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ]);
     }
 
+    // Add the current application as one CSV row.
     fputcsv($file_handle, [
         $app_id, $submission_date, $student_name, $dob, $gender, 
         $target_class, $prev_school, $academic_details, 
         $parent_name, $relationship, $primary_phone, $alt_phone, 
         $email, $residential_address, $uploaded_file_name
     ]);
+    // Release the tracker file after writing is complete.
     fclose($file_handle);
 }
 ?>
@@ -101,6 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/images/budge.jpg" type="image/jpeg">
     <title>Matugga Hills SS - Online Admission Portal</title>
+    <!-- Inline styles: define the admission portal layout and form appearance. -->
     <style>
         :root { --primary: #004080; --secondary: #274e13; --bg: #f4f7f6; --text: #333; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
@@ -146,14 +158,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p>Online Student Admission & Registration Portal</p>
     </div>
 
+    <!-- Choose the receipt view after submission or the application form before submission. -->
     <?php if ($submitted): ?>
         <!-- ========================================== -->
         <!-- 2. VIEW: SUCCESS RECEIPT                   -->
         <!-- ========================================== -->
+        <!-- Confirmation banner: shows the successful submission status and tracking ID. -->
         <div class="badge-success">
             ✔ Application Submitted Successfully! <br> Tracking ID: <strong><?php echo $app_id; ?></strong>
         </div>
 
+        <!-- Receipt table: displays the submitted details for the applicant's records. -->
         <table class="receipt-table">
             <tr><th>Tracking ID</th><td><?php echo $app_id; ?></td></tr>
             <tr><th>Submission Date</th><td><?php echo $submission_date; ?></td></tr>
@@ -167,6 +182,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <tr><th>Uploaded File</th><td><?php echo $uploaded_file_name; ?></td></tr>
         </table>
 
+        <!-- Receipt actions: allow printing or starting another application. -->
         <div class="btn-container">
             <button onclick="window.print()" class="btn btn-print">🖨 Print / Save as PDF</button>
             <a href="index.php" class="btn">⬅ Submit Another Application</a>
@@ -179,6 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="index.php" method="POST" enctype="multipart/form-data">
             
             <!-- Student Bio Details -->
+            <!-- Student information group: collects identity and previous school details. -->
             <fieldset>
                 <legend>1. Student Information</legend>
                 <div class="form-group">
@@ -206,6 +223,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </fieldset>
 
             <!-- Academic & Class Selection -->
+            <!-- Academic group: selects the target class and reveals matching fields. -->
             <fieldset>
                 <legend>2. Academic & Class Requirements</legend>
                 <div class="form-group">
@@ -219,7 +237,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </select>
                 </div>
 
-                <!-- SENIOR ONE DYNAMIC SECTION -->
+                <!-- Senior One fields: collect PLE results and subject grades. -->
                 <div id="sec_s1" class="dynamic-section">
                     <h4 style="margin-bottom: 10px; color: var(--primary);">Senior One - PLE Results Breakdown</h4>
                     <div class="form-group">
@@ -235,7 +253,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
 
-                <!-- SENIOR 2 & 3 DYNAMIC SECTION -->
+                <!-- Senior Two and Three fields: collect previous class and subject performance. -->
                 <div id="sec_s23" class="dynamic-section">
                     <h4 style="margin-bottom: 10px; color: var(--primary);">Senior 2 / Senior 3 - Previous Academic Performance</h4>
                     <div class="form-group">
@@ -253,7 +271,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
 
-                <!-- SENIOR FIVE DYNAMIC SECTION -->
+                <!-- Senior Five fields: collect UCE results and the desired combination. -->
                 <div id="sec_s5" class="dynamic-section">
                     <h4 style="margin-bottom: 10px; color: var(--primary);">Senior Five - UCE Results & Subject Combinations</h4>
                     <div class="grid-2">
@@ -276,7 +294,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
 
-                <!-- FILE UPLOAD -->
+                <!-- Transcript upload: accepts a previous report card or result slip. -->
                 <div class="form-group" style="margin-top: 20px;">
                     <label for="transcript">Upload Previous Report Card or Result Slip (PDF/Image):</label>
                     <input type="file" id="transcript" name="transcript" accept=".pdf,.jpg,.jpeg,.png">
@@ -284,6 +302,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </fieldset>
 
             <!-- Parent / Guardian Information -->
+            <!-- Guardian group: collects the parent or guardian's contact details. -->
             <fieldset>
                 <legend>3. Parent / Guardian Contact Details</legend>
                 <div class="grid-2">
@@ -322,13 +341,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </fieldset>
 
+            <!-- Submit button: sends all form data to this PHP file for processing. -->
             <button type="submit" class="btn-submit">Submit Application</button>
         </form>
     <?php endif; ?>
 
 </div>
 
-<!-- JavaScript for Dynamic Section Toggling -->
+<!-- JavaScript: switches class-specific academic fields as the selection changes. -->
 <script>
 function toggleAcademicSections() {
     var selectedClass = document.getElementById("target_class").value;

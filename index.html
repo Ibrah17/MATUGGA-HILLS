@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <!-- Site header: displays the school badge, name, and motto. -->
     <header class="site-header">
         <div class="title-wrap">
             <img src="assets/images/budge.jpg" alt="Matugga Hills Secondary School badge" class="school-badge">
@@ -21,6 +22,7 @@
         </div>
     </header>
     
+    <!-- Main navigation: links visitors to the website's key pages and actions. -->
     <nav class="site-nav">
         <div class="menu-toggle" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
@@ -36,6 +38,7 @@
         </div>
     </nav>
 
+    <!-- Welcome hero: introduces the school and hosts the rotating background slideshow. -->
     <section class="hero">
         <div class="hero-content">
             <h2>Welcome to our school</h2>
@@ -45,6 +48,7 @@
         </div>
     </section>
 
+    <!-- Identity section: presents the school's motto, vision, and core values. -->
     <section class="section identity-section">
     <div class="identity-container">
         <h2>Our Identity</h2>
@@ -94,6 +98,7 @@
     </div>
     </section>
     
+    <!-- Why-us section: explains the academic, community, and spiritual benefits of joining. -->
     <section class="why-us scroll-reveal">
             <!---Left column: For texts and list-->
         <div class="content-container">
@@ -138,6 +143,7 @@
     </section>
 
 
+    <!-- Leadership preview: introduces selected members of the school leadership team. -->
     <section class="leadership-section">
         <h3>Meet Our School Leadership Team</h3>
         <div class="leadership">
@@ -180,18 +186,34 @@
         <a href="staff.html" class="view-more">View all</a>
     </section>
 
+    <!-- Leadership messages: places the Director's message on the left and the Headteacher's message on the right. -->
     <section class="headteacher-section section">
-        <div class="headteacher-container">
-            <img src="assets/images/hm.jpg" alt="Head Teacher" class="headteacher-img">
-            <div class="headteacher-text">
-                <h3>Headteacher's Message</h3>
-                <h4>Mr. Kato Edward — Head Teacher</h4>
-                <p class="excerpt">I greet you in the mighty name of God. I am honoured to serve you at Matugga Hills Secondary School, which began more than ten years ago with a vision to improve learners' livelihoods, nurture their spirituality, and restore their self-confidence.</p>
-                <a href="headteacher.html" class="read-more-btn">Read full message</a>
-            </div>
+        <div class="message-grid">
+            <!-- Director's message preview and link to the complete message page. -->
+            <article class="headteacher-container message-card">
+                <img src="assets/images/Director.JPG" alt="Managing Director" class="headteacher-img">
+                <div class="headteacher-text">
+                    <h3>Director's Message</h3>
+                    <h4>Mr. Arinaitwe Kenneth — Managing Director</h4>
+                    <p class="excerpt">Welcome to Matugga Hills Secondary School. We are committed to building a strong community where every learner receives quality education, develops good character, and is prepared to make a meaningful contribution to society.</p>
+                    <a href="director.html" class="read-more-btn">Read director's message</a>
+                </div>
+            </article>
+
+            <!-- Headteacher's message preview and link to the complete message page. -->
+            <article class="headteacher-container message-card">
+                <img src="assets/images/hm.jpg" alt="Head Teacher" class="headteacher-img">
+                <div class="headteacher-text">
+                    <h3>Headteacher's Message</h3>
+                    <h4>Mr. Kato Edward — Head Teacher</h4>
+                    <p class="excerpt">I greet you in the mighty name of God. I am honoured to serve you at Matugga Hills Secondary School, which began more than ten years ago with a vision to improve learners' livelihoods, nurture their spirituality, and restore their self-confidence.</p>
+                    <a href="headteacher.html" class="read-more-btn">Read headteacher's message</a>
+                </div>
+            </article>
         </div>
     </section>
 
+    <!-- Announcements: highlights upcoming school dates and activities. -->
     <section class="section announcements-section">
     <div class="announcements-container">
         <h2>Latest Announcements</h2>
@@ -231,6 +253,7 @@
     </div>
     </section>
 
+    <!-- Gallery: displays selected school photographs in a lightbox-enabled layout. -->
     <section class="gallery scroll-reveal">
     <h4>OUR SCHOOL GALLERY WITH LATEST PICTURES</h4>
     
@@ -281,6 +304,7 @@
     </div>
     </section>
     
+    <!-- Contact section: provides the school's communication channels and location. -->
     <section class="section contact-section">
     <div class="contact-container">
         <h2>Get in Touch</h2>
@@ -330,6 +354,7 @@
     </div>
 </section>
 
+    <!-- Inquiry form: hidden modal-style section used for visitor questions. -->
     <!-- Inquiry Form -->
     <section class="modal" id="inquiryForm">
       <div class="modal-content">
@@ -376,7 +401,8 @@
     </section>
 
 
-     <footer class="site-footer">
+    <!-- Footer: contains secondary links, social links, and copyright information. -->
+    <footer class="site-footer">
             <div class="footer-grid">
                 <div class="footer-col">
                     <h5>About Us</h5>
@@ -416,8 +442,10 @@
                 <p>&copy; 2026 Matugga Hill Secondary School. All rights reserved.</p>
             </div>
         </footer>
-        <script src="main.js"></script>
+           <!-- Shared JavaScript: controls the gallery button and hero slideshow. -->
+           <script src="main.js"></script>
 
+       <!-- Page actions: handles alerts, inquiry visibility, navigation, and the mobile menu. -->
    <script>
         function showMessage() {
             alert("Admissions portal coming soon! Stay tuned for the 2026 intake.");

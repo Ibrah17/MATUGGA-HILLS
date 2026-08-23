@@ -1,4 +1,4 @@
-/* reset & base */
+/* Reset shared spacing and establish the default font for every page element. */
 * {
     margin: 0;
     padding: 0;
@@ -7,12 +7,14 @@
 }
 
 :root{
+    /* Shared color tokens used by the school website's visual theme. */
     --secondary: #00008b;
     --primary: #0000ff;
     --tertiary: #f4f7f6;
 }
 
 body {
+    /* Give pages a readable background and consistent text rhythm. */
     background-color: #f0f4fa;
     line-height: 1.6;
     color: #1e2b3c;
@@ -151,13 +153,17 @@ header p {
 }      
 
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('assets/images/s6 pic.JPG') center/cover no-repeat;
+    /* The solid color prevents a flash while the image layers are moving. */
+    background: #111827;
+        /* Hold the hero area in place while the two image layers slide across it. */
     padding: 0;
     text-align: center;
     align-items: center;
     justify-content: center;
     display: flex;
     min-height: 500px;
+    position: relative;
+    overflow: hidden;
     /*max-width: 1100px;
     border-radius: 16px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
@@ -168,7 +174,44 @@ header p {
     
     color: white;*/
 }
+.hero::before {
+    /* Current slide: this layer moves left when the next photo enters. */
+    content: "";
+    position: absolute;
+        /* Display the current photograph and move it out to the left during a change. */
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), var(--hero-image, url('assets/images/s6 pic.JPG')) center/cover no-repeat;
+    opacity: 1;
+    transform: translateX(0);
+    transition: transform 900ms cubic-bezier(0.65, 0, 0.35, 1);
+    will-change: transform;
+}
+.hero::after {
+    /* Incoming slide: this layer starts off-screen to the right. */
+    content: "";
+    position: absolute;
+        /* Display the next photograph just outside the right edge before it enters. */
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), var(--hero-next-image, url('assets/images/s6 pic.JPG')) center/cover no-repeat;
+    opacity: 1;
+    transform: translateX(100%);
+    transition: transform 900ms cubic-bezier(0.65, 0, 0.35, 1);
+    will-change: transform;
+}
+.hero.is-changing::before {
+    /* Move the outgoing image outside the hero viewport. */
+    transform: translateX(-100%);
+        /* Send the current photograph off-screen to make room for the next one. */
+}
+.hero.is-changing::after {
+    /* Move the next image into the hero viewport. */
+    transform: translateX(0);
+        /* Bring the next photograph fully into view. */
+}
 .hero-content {
+    /* Keep welcome text above both moving image layers. */
+    position: relative;
+    z-index: 1;
     background: rgba(0, 0, 0, 0.35);
     padding: 24px 28px;
     border-radius: 14px;
@@ -1176,6 +1219,14 @@ button:hover {
     background: linear-gradient(180deg, #fffdf9 0%, #fff9f2 100%);
     padding: 48px 5%;
 }
+.message-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+        /* Place the two leadership message cards side by side on larger screens. */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
 .headteacher-container {
     max-width: 1100px;
     margin: 0 auto;
@@ -1186,6 +1237,13 @@ button:hover {
     padding: 28px;
     border-radius: 14px;
     box-shadow: 0 18px 40px rgba(18, 52, 86, 0.06);
+}
+.message-card {
+    max-width: none;
+    margin: 0;
+    align-items: flex-start;
+        /* Stack each portrait above its message while keeping both cards equal in the grid. */
+    flex-direction: column;
 }
 .headteacher-img {
     width: 220px;
@@ -1240,6 +1298,7 @@ button:hover {
 .view-more:hover { text-decoration: underline; }
 
 @media (max-width: 900px) {
+    .message-grid { grid-template-columns: 1fr; }
     .headteacher-container { flex-direction: column; text-align: center; }
     .headteacher-text { padding: 0 8px; }
     .headteacher-text p { text-align: left; }
