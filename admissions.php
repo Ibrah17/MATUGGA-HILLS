@@ -200,7 +200,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <legend>1. Student Information</legend>
                 <div class="form-group">
                     <label for="student_name">Full Name of Student *</label>
-                    <input type="text" id="student_name" name="student_name" required placeholder="e.g., Mukasa John">
+                    <input type="text" id="student_name" name="student_name" required placeholder="e.g.,  Ibrah kiwa">
                 </div>
                 <div class="grid-2">
                     <div class="form-group">
@@ -336,7 +336,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="email" id="email" name="email" placeholder="for sending confirmation notifications">
                 </div>
                 <div class="form-group">
-                    <label for="residential_address">Physical / Residential Address *</label>
+                    <label for="residential_address">Physical Address *</label>
                     <textarea id="residential_address" name="residential_address" rows="2" required placeholder="Town, District, Village"></textarea>
                 </div>
             </fieldset>
