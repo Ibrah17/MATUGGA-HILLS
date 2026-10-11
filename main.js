@@ -11,9 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "assets/images/students in lab.JPG",
         "assets/images/it lab.JPG"
     ];
-    // Define how long each image stays visible and how long the slide takes.
+    // Keep each image visible before gently fading to the next one.
     const slideTime = 5000;
-    const transitionTime = 900;
+    const transitionTime = 2000;
     // Find the optional button that reveals hidden gallery items.
     const viewMoreBtn = document.getElementById("viewMoreBtn");
 
@@ -31,24 +31,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Track which image is currently displayed.
         let currentImage = 0;
-        // Schedule a new slide after each display interval.
-        setInterval(() => {
-            // Calculate the next image and place it on the incoming layer.
-            const nextImage = (currentImage + 1) % heroImages.length;
-            hero.style.setProperty("--hero-next-image", `url("${heroImages[nextImage]}")`);
-            // Add the CSS class that moves the current image out and the next image in.
-            hero.classList.add("is-changing");
-
-            // Wait for the CSS movement to finish before updating the current image.
+        const showNextSlide = () => {
+            // Leave the current image on screen before starting the next fade.
             setTimeout(() => {
-                // Store the new image as the current slide.
-                currentImage = nextImage;
-                // Move the completed slide into the current image layer.
-                hero.style.setProperty("--hero-image", `url("${heroImages[currentImage]}")`);
-                // Remove the movement class so the hero is ready for the next slide.
-                hero.classList.remove("is-changing");
-            }, transitionTime);
-        }, slideTime);
+                const nextImage = (currentImage + 1) % heroImages.length;
+                hero.style.setProperty("--hero-next-image", `url("${heroImages[nextImage]}")`);
+                hero.classList.add("is-changing");
+
+                // Update the base image after the fade, then hold it before the next change.
+                setTimeout(() => {
+                    currentImage = nextImage;
+                    hero.style.setProperty("--hero-image", `url("${heroImages[currentImage]}")`);
+                    hero.classList.remove("is-changing");
+                    showNextSlide();
+                }, transitionTime);
+            }, slideTime);
+        };
+
+        showNextSlide();
     }
     
     // Add the gallery reveal behavior only when that button exists on the current page.
