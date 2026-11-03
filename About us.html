@@ -157,23 +157,30 @@
     background:rgba(0,0,0,0.14);
   }
   .stat-item{
-    padding:1.6rem 1rem;
+    padding:1.4rem 1rem;
     text-align:center;
     border-right:1px solid rgba(250,246,238,0.12);
+    min-height:140px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:.45rem;
   }
   .stat-item:last-child{border-right:none;}
   .stat-num{
     font-family:var(--serif);
     font-weight:700;
-    font-size:1.9rem;
+    font-size:clamp(1.5rem, 2vw, 2.15rem);
     color:var(--gold-400);
     display:block;
+    line-height:1.1;
   }
   .stat-label{
     font-size:.76rem;
-    letter-spacing:.05em;
+    letter-spacing:.08em;
     text-transform:uppercase;
-    color:rgba(250,246,238,0.68);
+    color:rgba(250,246,238,0.72);
+    line-height:1.4;
   }
 
   /* Section shell */
@@ -479,16 +486,16 @@
           <span class="stat-label">Year Founded</span>
         </div>
         <div class="col-6 col-md-3 stat-item">
-          <span class="stat-num">700+</span>
-          <span class="stat-label">Students Enrolled</span>
+          <span class="stat-num">UCE: U4036</span>
+          <span class="stat-label">Exam Centre No. since 2022</span>
         </div>
         <div class="col-6 col-md-3 stat-item">
-          <span class="stat-num">U4036</span>
-          <span class="stat-label">UCE &amp; UACE Centre No.</span>
+          <span class="stat-num">UACE: U4036</span>
+          <span class="stat-label">Exam Centre No. since 2023</span>
         </div>
         <div class="col-6 col-md-3 stat-item">
-          <span class="stat-num">15+ yrs</span>
-          <span class="stat-label">Of Continuous Service</span>
+          <span class="stat-num">2017</span>
+          <span class="stat-label">Current Campus Year</span>
         </div>
       </div>
     </div>
@@ -522,7 +529,7 @@
           <p class="mb-0"><i class="bi bi-quote text-warning me-1"></i> The school began operations in rented premises with a few small classrooms — opening with <strong>100 students</strong> from Senior One to Senior Six, supported by <strong>13 dedicated teachers</strong>.</p>
         </div>
         <div class="collapse mt-4" id="fullHistory" hidden>
-          <p>Despite operating in modest facilities, the staff remained committed to providing quality education. The first Headteacher, <strong>Mr. Kato Edward</strong>, was appointed in 2010. Having already spent three years in the teaching profession before joining the school, he has continued to serve faithfully as the school's Headteacher.</p>
+          <p>Despite operating in modest facilities, the staff remained committed to providing quality education. The first Principal, <strong>Mr. Kato Edward</strong>, was appointed in 2010. Having already spent three years in the teaching profession before joining the school, he has continued to serve faithfully as the school's Principal.</p>
           <p>Although the school did not initially have its own UNEB examination centre, students consistently achieved excellent academic results while sitting their examinations at other registered schools. In its second year, the best UCE candidate scored <strong>17 aggregates</strong>, while the best UACE candidate obtained <strong>22 points</strong>.</p>
           <p class="mb-0">Today, Matugga Hills Secondary School continues to grow as a centre of academic excellence, discipline and character development — remaining committed to nurturing responsible, competent and morally upright citizens.</p>
         </div>
@@ -594,7 +601,7 @@
           <div class="d-flex align-items-center gap-3 mb-3">
             <div class="staff-avatar">NS</div>
             <div>
-              <h3 class="h6 mb-0">Madam Nabayozi Sumayya</h3>
+              <h3 class="h6 mb-0">Madam Nabayozi Sumayyah</h3>
               <span class="staff-since">Joined 2010</span>
             </div>
           </div>
@@ -612,8 +619,8 @@
               <span class="staff-since">Joined 2012</span>
             </div>
           </div>
-          <span class="staff-role mb-2">Deputy Headteacher</span>
-          <p class="small text-secondary mb-0">Joined as a teacher in 2012; promoted to Assistant Director of Studies (2014), Director of Studies (2016), and Deputy Headteacher (2025).</p>
+          <span class="staff-role mb-2">Deputy Principal</span>
+          <p class="small text-secondary mb-0">Joined as a teacher in 2012; promoted to Assistant Director of Studies (2014), Director of Studies (2016), and Deputy Principal (2025).</p>
         </div>
       </div>
 
